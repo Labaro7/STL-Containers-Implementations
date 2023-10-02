@@ -2,7 +2,6 @@
 #define	VECTOR_HPP
 
 #include <memory>
-#include <iostream>
 
 constexpr size_t INITIAL_CAPACITY = 32;
 
