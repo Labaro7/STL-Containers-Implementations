@@ -80,7 +80,7 @@ template <typename T>
 void Queue<T>::pop() {
 	try {
 		if (empty()) {
-			throw std::runtime_error("Queue is empty, cannot pop value. Exiting with value -1");
+			throw std::out_of_range("Queue is empty.");
 		}
 
 		if (_back == _front) {
@@ -95,7 +95,7 @@ void Queue<T>::pop() {
 
 		_size--;
 	}
-	catch (const std::runtime_error& e) {
+	catch (const std::out_of_range& e) {
 		std::cout << std::endl;
 		std::cerr << e.what() << std::endl;
 		exit(-1);
@@ -106,15 +106,14 @@ template <typename T>
 T Queue<T>::front() const {
 	try {
 		if (empty()) {
-			throw std::runtime_error("Queue is empty, cannot get front value. Exiting with value -1");
-			return 0;
+			throw std::out_of_range("Queue is empty.");
 		}
 
 		return _front->val;
 	}
-	catch (const std::runtime_error& e) {
+	catch (const std::out_of_range& e) {
 		std::cout << std::endl;
-		std::cerr << e.what() << std::endl;
+		std::cerr << std::endl << e.what() << std::endl;
 		exit(-1);
 	}
 }
@@ -123,13 +122,12 @@ template <typename T>
 T Queue<T>::back() const {
 	try {
 		if (empty()) {
-			throw std::runtime_error("Queue is empty, cannot get back value. Exiting with value -1");
-			return 0;
+			throw std::out_of_range("Queue is empty.");
 		}
 
 		return _back->val;
 	}
-	catch (const std::runtime_error& e) {
+	catch (const std::out_of_range& e) {
 		std::cout << std::endl;
 		std::cerr << e.what() << std::endl;
 		exit(-1);

@@ -4,7 +4,7 @@
 #include <memory>
 #include <iostream>
 
-constexpr int INITIAL_CAPACITY = 32;
+constexpr size_t INITIAL_CAPACITY = 32;
 
 template <typename T>
 class Vector {
@@ -56,7 +56,7 @@ void Vector<T>::reallocate_and_push_back(T val) {
 
 	//std::cout << std::endl << "REALOCATING..." << std::endl;
 
-	std::unique_ptr<T[]> new_data(new T[_capacity]);
+	std::unique_ptr<T[]> new_data = std::make_unique<T[]>(_capacity);
 	std::copy(_data.get(), _data.get() + _size, new_data.get());
 
 	_data = std::move(new_data);
@@ -70,14 +70,14 @@ template <typename T>
 void Vector<T>::push_back(T val) {
 	try {
 		if (_size == _capacity) {
-			throw std::runtime_error("Max size reached");
+			throw std::out_of_range("Max size reached");
 		}
 
 		_data[_size] = val;
 		_size++;
 
 	}
-	catch (std::runtime_error) {
+	catch (std::out_of_range) {
 		reallocate_and_push_back(val);
 	}
 
@@ -87,10 +87,10 @@ template <typename T>
 void Vector<T>::pop_back() {
 	try {
 		if (_size <= 0) {
-			throw std::runtime_error("Vector is empty, cannot pop back value. Exiting with code -1");
+			throw std::out_of_range("Vector is empty.");
 		}
 	}
-	catch (std::runtime_error& e) {
+	catch (std::out_of_range& e) {
 		std::cerr << std::endl << e.what() << std::endl;
 		exit(-1);
 	}
@@ -103,10 +103,10 @@ template <typename T>
 T Vector<T>::front() const {
 	try {
 		if (_size <= 0) {
-			throw std::runtime_error("Vector is empty, cannot get front value. Exiting with code -1");
+			throw std::out_of_range("Vector is empty.");
 		}
 	}
-	catch (std::runtime_error& e) {
+	catch (std::out_of_range& e) {
 		std::cerr << std::endl << e.what() << std::endl;
 		exit(-1);
 	}
@@ -118,10 +118,10 @@ template <typename T>
 T Vector<T>::back() const {
 	try {
 		if (_size <= 0) {
-			throw std::runtime_error("Vector is empty, cannot get back value. Exiting with code -1");
+			throw std::out_of_range("Vector is empty.");
 		}
 	}
-	catch (std::runtime_error& e) {
+	catch (std::out_of_range& e) {
 		std::cerr << std::endl << e.what() << std::endl;
 		exit(-1);
 	}
