@@ -3,7 +3,6 @@ Possible implementations of the STL Containers.
 
 It was made using templates in order to make the containers generic for any C++ or custom types.
 
-The classes throw exceptions that terminate the process that called them when encountering bad conditions.
 
 ## Vector
 Dynamic array. It is given a certain capacity and when it is full, it allocates two times the current capacity and deallocates the previous one.
