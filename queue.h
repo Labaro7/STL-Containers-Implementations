@@ -98,7 +98,6 @@ void Queue<T>::pop() {
 	catch (const std::out_of_range& e) {
 		std::cout << std::endl;
 		std::cerr << e.what() << std::endl;
-		exit(-1);
 	}
 }
 
@@ -114,7 +113,6 @@ T Queue<T>::front() const {
 	catch (const std::out_of_range& e) {
 		std::cout << std::endl;
 		std::cerr << std::endl << e.what() << std::endl;
-		exit(-1);
 	}
 }
 
@@ -130,7 +128,6 @@ T Queue<T>::back() const {
 	catch (const std::out_of_range& e) {
 		std::cout << std::endl;
 		std::cerr << e.what() << std::endl;
-		exit(-1);
 	}
 }
 

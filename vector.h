@@ -91,7 +91,6 @@ void Vector<T>::pop_back() {
 	}
 	catch (std::out_of_range& e) {
 		std::cerr << std::endl << e.what() << std::endl;
-		exit(-1);
 	}
 
 	_data[_size - 1] = 0;
@@ -107,7 +106,6 @@ T Vector<T>::front() const {
 	}
 	catch (std::out_of_range& e) {
 		std::cerr << std::endl << e.what() << std::endl;
-		exit(-1);
 	}
 
 	return _data[_size-1];
@@ -122,7 +120,6 @@ T Vector<T>::back() const {
 	}
 	catch (std::out_of_range& e) {
 		std::cerr << std::endl << e.what() << std::endl;
-		exit(-1);
 	}
 
 	return _data[0];
