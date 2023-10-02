@@ -38,12 +38,11 @@ template <typename T>
 T Vector<T>::at(int i) const {
 	try {
 		if (i >= _size) {
-			throw std::runtime_error("Vector access out of bounds. Exiting with code -1");
+			throw std::out_of_range("Vector access out of bounds.");
 		}
 	}
-	catch(std::runtime_error& e) {
+	catch(std::out_of_range& e) {
 		std::cerr << std::endl << e.what() << std::endl;
-		exit(-1);
 	}
 
 	return _data[i];
